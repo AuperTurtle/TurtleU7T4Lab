@@ -295,7 +295,42 @@ public class ArrayListAlgorithms
      *  @param numList  numList of ints
      */
     public static ArrayList<Integer> modes(int[] numList) {
+        int maxCounter = 0;
+        int counter = 0;
+        int prevCounter = 0;
+        boolean different = false;
+        boolean firstRun = true;
 
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        for (int i = 0; i < numList.length; i++) {
+            for (int z = 0; z < numList.length; z++) {
+                if (numList[i] == numList[z]) {
+                    counter++;
+                }
+                if (counter > maxCounter) {
+                    maxCounter = counter;
+                    nums.clear();
+                    if (!nums.contains(numList[i])) {
+                        nums.add(numList[i]);
+                    }
+                }
+                if (counter == maxCounter) {
+                    if (!nums.contains(numList[i])) {
+                        nums.add(numList[i]);
+                    }                }
+                }
+            if (prevCounter != counter && !firstRun) {
+                different = true;
+            }
+            prevCounter = counter;
+            counter = 0;
+            firstRun = false;
+        }
+        if (!different) {
+            nums.clear();
+            return nums;
+        }
+        return nums;
     }
 
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArrayListAlgorithms
 {
@@ -332,5 +333,19 @@ public class ArrayListAlgorithms
         }
         return nums;
     }
+
+    public static void sortStudents(ArrayList<Student> studentsToSort) {
+        ArrayList<Student> tempArray = new ArrayList<Student>();
+        String[] lastNames = new String[studentsToSort.size() - 1];
+        String[] firstNames = new String[studentsToSort.size() - 1];
+        for (int i = 0; i < studentsToSort.size() - 1; i++) {
+            lastNames[i] = studentsToSort.get(i).getLastName();
+            firstNames[i] = studentsToSort.get(i).getFirstName();
+        }
+        Arrays.sort(lastNames);
+        Arrays.sort(firstNames);
+
+    }
+
 
 }
